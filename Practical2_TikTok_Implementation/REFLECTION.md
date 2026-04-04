@@ -1,59 +1,92 @@
 # Reflection - Practical 2: TikTok REST API
 
 ## What I did
-I have made a REST API backend of my tiktok clone using the Node.js and the Express.js. This has differnet API having different endpoints for users, videos and comments.
+In this practical, I made a REST API backend for my tiktok clone using Node.js and Express.js.
+
+I created different APIs with endpoints for users, videos and comments. At first it was bit confusing but later it started making sense slowly.
 
 ## Main Concepts 
 
 ### 1. REST API
-My first time making REST API where I am larning how to use HTTP methods to many/different steps like:
-- GET - to retrive data
-- POST - to make new data
-- PUT - to edit data
-- DELETE - to remove data
+This was my first time making a REST API so everything was kinda new for me.
+
+I learned how HTTP methods work:
+- GET - to retrive data  
+- POST - to create new data  
+- PUT - to update data  
+- DELETE - to remove data  
+
+Before this I didn’t really understand what these methods actually do 😅
 
 ### 2. Express.js
-Using this Express.js i was able to make the server and handle all the routes of the pages. This Express.js was easier to use to connect URLs with functions.
+Using Express.js I was able to create the server and handle routes.
+
+It was actually easier than I thought. I just connect URL with functions and it works, which is kinda cool.
 
 ### 3. MVC Structure
-I also learned about the modole view structure:
-- Models holds the data
-- Controllers deals with the logic
-- Routes show/define the paths
+I learned about MVC structure (even tho I got confused at first):
+
+- Models → store data  
+- Controllers → handle logic  
+- Routes → define paths  
+
+After some time I understood why we separate things like this. It makes code less messy.
 
 ### 4. Middleware
-It goes between the request and response is what i learned using:
-- Morgan for logging requests
-- CORS to allow the frontend to interact with the backend
-- Body-parser to read the request data
+Middleware was bit confusing at first.
+
+I learned that it runs between request and response.
+
+I used:
+- Morgan → for logging requests  
+- CORS → to allow frontend to talk with backend  
+- body-parser → to read request data  
 
 ### 5. In-Memory Data Storage
-Since i am not using any database, i had to hold the datas in the variables where the data auto resets whenever the server is restarted.
+I didn’t use any database in this practical.
+
+So I stored data in variables. But problem is, data resets every time server restarts 😭
+
+So yeah not good for real apps but ok for learning.
 
 ## What I Learned
-From this lab work i had lots to learn like how to use Node.js server, how to make api endpoints, how to arrange the codes using the folders like controlles/routes, after creating those , i learn to test API usig the curl to check if it is working or not, how to apply and where use the environment variables, and i leanred few common ideas about the status codes in HTTP like 200, 404, and 500.
+From this practical I learned many things:
+
+- how to create server using Node.js  
+- how to make API endpoints  
+- how to organize code using controllers and routes  
+- how to test APIs using curl (this was new for me)  
+- how to use environment variables  
+- basic HTTP status codes like 200, 404, 500  
+
+Before this I was just writing random code but now I understand bit more how backend works.
 
 ## Challenges
 
-### 1: 
-I did understand the files paths using '../' but later i found out that the '../' is one folder up when going.
+### 1:
+At first I didn’t understand file paths using `../`
 
+Later I found out it means going one folder up. Simple but confused me a lot in beginning.
 
-### 2: 
-I did not know why my port 3000 was not working , it turns out that my port 3000 was already been used or runed in the frontend , so i had to use port 8000 in the .env file to run the backend of the server.
+### 2:
+My port 3000 was not working and I didn’t know why.
 
+Then I realized it was already being used by frontend. So I changed backend port to 8000 in `.env` file.
 
 ### 3:
-Without the frontend , i did not know how to run or test the APIs but later i learned some of the curl commands in the terminal directly to test the functions of the API.
+Without frontend I didn’t know how to test APIs.
 
+Later I learned some curl commands and tested APIs in terminal directly. That helped a lot.
 
 ## HTTP Status Codes I Used
--200, meaing Ok ,to get the data success
--201, meaing done creating, to create new data 
--204, meaing no data, for deleted datas 
--400, wrong/weak request, for incomplete fields
--404, not found, for when data is not found 
--409, repeatation, when there is two smae datas 
+- 200 → OK, when data is fetched successfully  
+- 201 → created, when new data is added  
+- 204 → no content, when data is deleted  
+- 400 → bad request, when input is wrong  
+- 404 → not found  
+- 409 → conflict, when duplicate data  
 
 ## Conclusion
-This lab or assigment made me learn thw work flow of APIs in the backend where i now know the connection between the frontend and backend. With this now i know that the frontend will be able to retrive real time data's not just the mock datas.
+This practical helped me understand how backend APIs actually work.
+
+Now I know how frontend and backend connect with each other. Before this I was just using fake data, but now I understand how real data can come from backend.
