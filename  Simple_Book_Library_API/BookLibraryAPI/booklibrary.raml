@@ -1,0 +1,100 @@
+#%RAML 1.0
+title: Book Library API
+version: v1
+baseUri: https://api.booklibrary.com/{version}
+
+types:
+  Book:
+    type: object
+    properties:
+      id: number
+      title: string
+      author: string
+      isbn: string
+      available: boolean
+
+  Error:
+    type: object
+    properties:
+      code: number
+      message: string
+      timestamp: datetime
+      requestId: string
+      details?: array
+
+/books:
+  get:
+    description: Get all books
+    responses:
+      200:
+        body:
+          application/json:
+            type: Book[]
+            example: |
+              [
+                { "id": 1, "title": "1984", "author": "George Orwell", "isbn": "978-0451524935", "available": true },
+                { "id": 2, "title": "The Alchemist", "author": "Paulo Coelho", "isbn": "978-0062315007", "available": false }
+              ]
+
+  post:
+    description: Add a new book
+    body:
+      application/json:
+        type: Book
+        example: |
+          { "title": "New Book", "author": "Some Author", "isbn": "978-0000000000", "available": true }
+    responses:
+      201:
+        body:
+          application/json:
+            type: Book
+      400:
+        body:
+          application/json:
+            type: Error
+            example: |
+              {
+                "code": 400,
+                "message": "Invalid book data",
+                "timestamp": "2025-05-11T14:30:15Z",
+                "requestId": "req-123456",
+                "details": ["Title is required"]
+              }
+
+  /{bookId}:
+    get:
+      description: Get a specific book
+      responses:
+        200:
+          body:
+            application/json:
+              type: Book
+        404:
+          body:
+            application/json:
+              type: Error
+              example: |
+                {
+                  "code": 404,
+                  "message": "Book not found",
+                  "timestamp": "2025-05-11T14:30:15Z",
+                  "requestId": "req-123456",
+                  "details": ["The book with ID 456 does not exist"]
+                }
+
+    delete:
+      description: Delete a book
+      responses:
+        204:
+          description: Book deleted successfully
+        404:
+          body:
+            application/json:
+              type: Error
+              example: |
+                {
+                  "code": 404,
+                  "message": "Book not found",
+                  "timestamp": "2025-05-11T14:30:15Z",
+                  "requestId": "req-123456"
+                }
